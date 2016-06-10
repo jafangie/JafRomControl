@@ -2,7 +2,7 @@
     android:layout_height="match_parent" android:layout_width="match_parent"
     android:id="@+id/googleDrawer" android:background="?attr/nav_drawer_bg_color">
 
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="168dp"
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="145dp"
         android:background="?attr/nav_drawer_header" android:id="@+id/navigationHeader"
         >
         <RelativeLayout
@@ -19,8 +19,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#ccffffff"
-                android:textSize="35dp"
-                android:text="6thGear ROM"
+                android:textSize="35sp"
+                android:text="Jaf ROM"
                 android:id="@+id/textView"
                 android:layout_centerVertical="true" />
         </RelativeLayout>

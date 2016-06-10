@@ -3,7 +3,7 @@
     <com.wubydax.romcontrol.prefs.ColorPickerPreference
         android:key="dialer_num_color"
         android:title="Choose Dialer Num Color"
-        android:defaultValue="#0000ff"
+        android:defaultValue="#ff0000"
         alphaSlider="true"/>
     <SwitchPreference
         android:defaultValue="true"

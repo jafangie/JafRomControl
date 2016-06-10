@@ -19,8 +19,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#ccffffff"
-                android:textSize="35dp"
-                android:text="Mods JAF ROM"
+                android:textSize="35sp"
+                android:text="Mods Jaf ROM"
                 android:id="@+id/textView"
                 android:layout_centerVertical="true" />
         </RelativeLayout>

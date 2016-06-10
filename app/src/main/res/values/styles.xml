@@ -23,15 +23,21 @@
         <item name="colorPrimary">@color/myPrimaryColor</item>
         <item name="colorPrimaryDark">@color/myPrimaryDarkColor</item>
 
-        <item name="android:textColorPrimary">@color/myTextPrimaryColor</item>
+        <item name="android:textColorPrimary">@color/primary_material_dark</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-        <item name="android:textColorPrimaryInverse">@color/myInverseColor</item>
+        <item name="android:textColorPrimaryInverse">@color/primary_text_default_material_dark</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
 
 
 
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:colorForeground">@color/Grey_Jaf</item>
+        <item name="android:textColorSecondary">@color/Grey_Jaf</item>
+        <item name="android:textColorSecondaryInverse">@color/jaf_color</item>
+        <item name="android:navigationBarColor">@color/myPrimaryColor</item>
+        <item name="colorAccent">@color/myPrimaryColor</item>
 
     </style>
 
