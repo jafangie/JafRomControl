@@ -10,14 +10,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.TypedValue;
@@ -36,7 +41,9 @@ import com.wubydax.romcontrol.prefs.MyListPreference;
 import com.wubydax.romcontrol.prefs.SeekBarPreference;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -114,28 +121,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
     public void allGroups(Preference p) {
         PreferenceScreen ps = (PreferenceScreen) p;
         ps.setOnPreferenceClickListener(this);
-
-            /*Initiate icon view for preferences with keys that are interpreted as Intent
-            *For more info see OnPreferenceClick method*/
-        if (ps.getKey() != null) {
-            if (ps.getKey().contains(".")) {
-                int lastDot = ps.getKey().lastIndexOf(".");
-                String pkgName = ps.getKey().substring(0, lastDot);
-                try {
-                    //if application package exists, we will set the icon successfully
-                    Drawable icon = c.getPackageManager().getApplicationIcon(pkgName);
-                    ps.setIcon(icon);
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
-                    /*In case of exception, icon will not be set and we will remove the preference to avoid crashes on clicks
-                    *To find the parent for each preference screen we use HashMap to buil the parent tree*/
-                    Map<Preference, PreferenceScreen> preferenceParentTree = buildPreferenceParentTree();
-                    PreferenceScreen preferenceParent = preferenceParentTree.get(ps);
-                    preferenceParent.removePreference(ps);
-
-                }
-            }
-        }
 
         for (int i = 0; i < ps.getPreferenceCount(); i++) {
             Preference p1 = ps.getPreference(i);
@@ -275,6 +260,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     MyEditTextPreference et = (MyEditTextPreference) pf.findPreference(key);
                     et.setSummary(t);
                 }
+
             }
         }
 
@@ -296,6 +282,27 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                if (key.equals("link_colors")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("sb_global_toggle")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("ongoing_notifications")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("quick_launch_visible")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("CustomCarrierRight")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("CustomCarrierCenter")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("CustomCarrierLeft")) {
+                    appRebootRequired("com.android.systemui");
+                }
                 break;
             case "CheckBoxPreference":
                 CheckBoxPreference cbp = (CheckBoxPreference) pf.findPreference(key);
@@ -323,7 +330,33 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 break;
             case "ColorPickerPreference":
                 ColorPickerPreference cpp = (ColorPickerPreference) pf.findPreference(key);
-                cpp.setColor(sharedPreferences.getInt(key, Color.WHITE));
+                if (key.equals("notification_background_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("statusbar_wifi_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("statusbar_signal_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("statusbar_data_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("statusbar_icon_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("sb_global_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("help_text_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("data_usage_color")) {
+                    appRebootRequired("com.android.systemui");
+                }
+                if (key.equals("CustomCarrierColor")) {
+                    appRebootRequired("com.android.systemui");
+                }
                 break;
         }
         /*Calling main method to handle updating database based on preference changes*/
@@ -413,8 +446,13 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 Toast.makeText(c, "App not installed or intent not valid", Toast.LENGTH_SHORT).show();
             }
 
-        } else if (preference.getKey() == null) {
-//            setToolbarForNested(preference);
+        } else if(preference.getKey() != null && preference.getKey().equals("notification_panel_bg")) {
+            Intent getContentIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            getContentIntent.setType("image/*");
+            pf.startActivityForResult(getContentIntent, 46);
+        } else if (preference.getKey() == null && preference.getIntent()!=null) {
+            Intent intentFromPreference = preference.getIntent();
+            c.startActivity(intentFromPreference);
         }
         return true;
     }

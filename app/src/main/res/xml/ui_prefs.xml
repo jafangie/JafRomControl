@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Trafficmeter">
+    <PreferenceCategory android:title="Traffic Network StatusBar">
         <SwitchPreference
+            android:defaultValue="true"
             android:key="tweaks_speed_view"
             android:summaryOff="Hide"
             android:summaryOn="Show"
-            android:title="On/Off" />
+            android:title="Network Speed On/Off" />
         <com.wubydax.romcontrol.prefs.ColorPickerPreference
             alphaSlider="true"
             hexValue="true"
@@ -21,39 +22,10 @@
             android:summary="Choose upload speed color"
             android:title="Upload speed color" />
     </PreferenceCategory>
-
-    <PreferenceCategory android:title="Status Bar Mods">
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="clock_visibility"
-            android:summaryOff="Clock is hidden"
-            android:summaryOn="Clock is visible"
-            android:title="Set Clock Visibility" />
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="brightness_visibility"
-            android:summaryOff="Brightness slider hidden"
-            android:summaryOn="Brightness slider is visible"
-            android:title="Notification Brightness Visibility" />
-        <com.wubydax.romcontrol.prefs.MyListPreference
-            android:defaultValue="2"
-            android:entries="@array/clock_position_entries"
-            android:entryValues="@array/clock_position_values"
-            android:key="any_clock_position"
-            android:title="Status Bar Clock Position" />
-        <com.wubydax.romcontrol.prefs.MyEditTextPreference
-            android:defaultValue="simpletext"
-            android:key="carrier_text"
-            android:title="Set Custom Carrier Text" />
-        <com.wubydax.romcontrol.prefs.IntentDialogPreference
-            includeSearch="true"
-            setSeparatorString="\##"
-            android:key="choosen_app_gear"
-            android:title="Choose App" />
-        <com.wubydax.romcontrol.prefs.FilePreference
-            android:key="testfile"
-            android:summaryOff="File doesn't exist"
-            android:summaryOn="File exists"
-            android:title="Test File Preference" />
+    <PreferenceCategory android:title="Potato clock">
+        <PreferenceScreen
+            android:key="com.potato.clock.main.Main"
+            android:summary="Customize Potato Clock"
+            android:title="Statusbar Clock" />
     </PreferenceCategory>
 </PreferenceScreen>

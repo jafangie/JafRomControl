@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    
+    <PreferenceCategory android:title="About ROM">
+        <PreferenceScreen android:title="XDA Forum Thread">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://goo.gl/s5Qfc9"
+                android:icon="@drawable/xda" />
+        </PreferenceScreen>
+        <PreferenceScreen android:title="Download Area">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://goo.gl/I34dF1"
+                android:icon="@drawable/download" />
+        </PreferenceScreen>
+        <PreferenceScreen android:title="Donate to Jafangie">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://goo.gl/cNWiW9"
+                android:icon="@drawable/paypal" />
+        </PreferenceScreen>
+    </PreferenceCategory>
 </PreferenceScreen>
