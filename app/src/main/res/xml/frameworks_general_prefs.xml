@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="About ROM">
-        <PreferenceScreen android:title="XDA Forum Thread">
+        <PreferenceScreen
+            android:icon="@drawable/xda"
+            android:summary="Click to visit Jaf T715 ROM thread"
+            android:title="XDA ROM Thread">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://goo.gl/s5Qfc9"
-                android:icon="@drawable/xda" />
+                android:data="http://goo.gl/s5Qfc9" />
         </PreferenceScreen>
-        <PreferenceScreen android:title="Download Area">
+        <PreferenceScreen
+            android:icon="@drawable/download"
+            android:summary="Click to visit Jaf T715 download area"
+            android:title="Download Area">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://goo.gl/I34dF1"
-                android:icon="@drawable/download" />
+                android:data="https://goo.gl/OUERlo" />
         </PreferenceScreen>
-        <PreferenceScreen android:title="Donate to Jafangie">
+        <PreferenceScreen
+            android:icon="@drawable/paypal"
+            android:summary="Click to visit Paypal"
+            android:title="Donate to Jafangie">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://goo.gl/cNWiW9"
-                android:icon="@drawable/paypal" />
+                android:data="https://goo.gl/eFud3p" />
         </PreferenceScreen>
     </PreferenceCategory>
 </PreferenceScreen>
